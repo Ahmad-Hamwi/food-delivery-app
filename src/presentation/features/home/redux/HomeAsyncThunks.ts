@@ -1,16 +1,13 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {HomeAggregate} from "../../../../infrastructure/aggregates/HomeAggregate";
-import {HomeApi, IHomeApi} from "../../../../infrastructure/apis/home/HomeApi";
-
-// type Args = {
-//     homeApi: IHomeApi,
-// }
+import {container} from "tsyringe";
+import {IHomeApi} from "../../../../infrastructure/apis/home/HomeApi";
 
 export const fetchHomeData = createAsyncThunk<HomeAggregate>(
     'home/fetchHomeData',
     async (_, {rejectWithValue}) => {
         try {
-            return await new HomeApi().getHomeData() // todo: inject homeApi instead
+            return await container.resolve<IHomeApi>("IHomeApi").getHomeData()
         } catch (error) {
             return rejectWithValue(error)
         }
