@@ -3,11 +3,11 @@ import React, {FC} from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 
-type HomeToolbarProps = StyledComponentProps & {
+type HomeSearchBarProps = StyledComponentProps & {
     onPress: () => void;
 }
 
-const HomeSearchBar: FC<HomeToolbarProps> = ({ style, onPress }) => {
+const HomeSearchBar: FC<HomeSearchBarProps> = ({ style, onPress }) => {
     return (
         <TouchableOpacity style={[style, styles.root]} onPress={onPress}>
             <Ionicons name="search" size={20} color="gray" style={styles.icon} />

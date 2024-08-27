@@ -1,12 +1,11 @@
 import {StyleSheet} from "react-native";
-import HomeSearchBar from "./HomeSearchBar";
 import HomeContent from "./HomeContent";
 import {SafeAreaView} from "react-native-safe-area-context";
-import HorizontalDivider from "../../components/HorizontalDivider";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../store";
 import {fetchHomeData} from "./redux/HomeAsyncThunks";
 import {useEffect} from "react";
+import HomeToolbar from "./HomeToolbar";
 
 export default function HomeScreen() {
     const dispatch = useDispatch<AppDispatch>();
@@ -17,13 +16,11 @@ export default function HomeScreen() {
     }, [dispatch]);
 
     return (
-        <SafeAreaView>
-            <HomeSearchBar
+        <SafeAreaView style={styles.root}>
+            <HomeToolbar
                 style={styles.toolbar}
-                onPress={() => {
-                }}
+                onPress={() => {}}
             />
-            <HorizontalDivider/>
             <HomeContent
                 style={styles.content}
                 state={homeState}
@@ -34,9 +31,12 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create(
     {
+        root: {
+            width: "100%",
+            height: "100%",
+        },
         toolbar: {
-            marginHorizontal: 16,
-            marginVertical: 16,
+            flex: 0,
         },
         content: {
             flex: 1,

@@ -10,10 +10,10 @@ type Props = StyledComponentProps & {
     state: HomeState
 }
 
-const HomeContent: FC<Props> = ({state}) => {
+const HomeContent: FC<Props> = ({style, state}) => {
     return (
         <StateHandler
-            style={styles.root}
+            style={style}
             state={state}
             loadedComponent={(style, data) => (
                 <FlatList
@@ -42,9 +42,6 @@ const HomeContent: FC<Props> = ({state}) => {
 
 const styles = StyleSheet.create(
     {
-        root: {
-            height: '100%'
-        },
         space: {
             height: 16
         },
