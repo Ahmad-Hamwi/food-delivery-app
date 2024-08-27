@@ -1,31 +1,21 @@
-import {DefaultTheme, NavigationContainer} from "@react-navigation/native";
+import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import HomeScreen from "../features/home/HomeScreen";
+import OutletDetailsScreen from "../features/outlet/details/OutletDetailsScreen";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
-// A workaround background coloring gets corrupted when adding navigation
-const navTheme = {
-    ...DefaultTheme,
-    colors: {
-        ...DefaultTheme.colors,
-        background: 'transparent',
-    },
+export type RootStackParamList = {
+    Home: undefined;
+    OutletDetails: { outletId: number; };
 };
 
 const AppNavigation = () => {
     return (
-        <NavigationContainer theme={navTheme}>
-            <Stack.Navigator
-                screenOptions={{
-                    headerShown: false,
-                }}
-                initialRouteName="Home"
-            >
-                <Stack.Screen
-                    name="Home"
-                    children={() => <HomeScreen/>}
-                />
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Home">
+                <Stack.Screen name="Home" component={HomeScreen}/>
+                <Stack.Screen name="OutletDetails" component={OutletDetailsScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     )

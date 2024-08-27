@@ -5,7 +5,7 @@ export interface OutletModel {
     description: string;
 }
 
-export const restaurantsData: OutletModel[] = [
+export const outletsData: OutletModel[] = [
     {
         id: 1,
         url: 'https://via.placeholder.com/800x400.png?text=The+Gourmet+Bistro',

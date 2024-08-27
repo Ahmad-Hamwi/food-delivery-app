@@ -4,10 +4,14 @@ import {SafeAreaView} from "react-native-safe-area-context";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../store";
 import {fetchHomeData} from "./redux/HomeAsyncThunks";
-import {useEffect} from "react";
+import {FC, useEffect} from "react";
 import HomeToolbar from "./HomeToolbar";
+import {RootStackParamList} from "../../navigation/AppNavigation";
+import {NativeStackScreenProps} from "@react-navigation/native-stack";
 
-export default function HomeScreen() {
+type Props = NativeStackScreenProps<RootStackParamList, "Home">;
+
+const HomeScreen: FC<Props> = ({navigation}) => {
     const dispatch = useDispatch<AppDispatch>();
     const homeState = useSelector((state: RootState) => state.home);
 
@@ -19,11 +23,13 @@ export default function HomeScreen() {
         <SafeAreaView style={styles.root}>
             <HomeToolbar
                 style={styles.toolbar}
-                onPress={() => {}}
+                onPress={() => {
+                }}
             />
             <HomeContent
                 style={styles.content}
                 state={homeState}
+                onOutletPressed={(outlet) => navigation.navigate('OutletDetails', {outletId: outlet.id})}
             />
         </SafeAreaView>
     )
@@ -43,3 +49,5 @@ const styles = StyleSheet.create(
         }
     }
 )
+
+export default HomeScreen;

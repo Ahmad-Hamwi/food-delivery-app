@@ -5,13 +5,17 @@ import {StyledComponentProps} from "../../components/StyledComponentProps";
 import {FC} from "react";
 import {HomeState} from "./redux/HomeState";
 import StateHandler from "../../components/StateHandler";
+import {OutletModel} from "../../../infrastructure/models/OutletModel";
 
 type Props = StyledComponentProps & {
     state: HomeState
+    onOutletPressed: (outlet: OutletModel) => void;
 }
 
-const HomeContent: FC<Props> = ({style, state}) => {
+const HomeContent: FC<Props> = ({style, state, onOutletPressed}) => {
+
     return (
+        // @ts-ignore
         <StateHandler
             style={style}
             state={state}
@@ -29,8 +33,7 @@ const HomeContent: FC<Props> = ({style, state}) => {
                         <OutletItem
                             style={styles.item}
                             restaurant={item}
-                            onPress={() => {
-                            }}
+                            onPress={() => onOutletPressed(item)}
                         />
                     )}
                     keyExtractor={item => item.id.toString()}

@@ -30,14 +30,10 @@ export default function StateHandler<Model>(
         return (errorComponent ? errorComponent : <ScreenError style={style} error={state.error}/>)
     }
 
-    const throwIllegalState = () => {
-        throw new Error("Illegal state error")
-    }
-
     return (
         state.loading ? loadingComponentResolver() :
             state.error ? errorComponentResolver() :
                 state.data ? loadedComponent(style, state.data) :
-                    throwIllegalState()
+                    <></>
     );
 }
