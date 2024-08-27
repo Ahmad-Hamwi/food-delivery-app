@@ -3,13 +3,13 @@ import {StyleSheet, Text, View} from "react-native";
 import {StyledComponentProps} from "./StyledComponentProps";
 
 type Props = StyledComponentProps & {
-    error: Error
+    error: Error | null
 }
 
 const ScreenError: FC<Props> = ({style, error}) => {
     return (
         <View style={[style, styles.root]}>
-            <Text>{error.message}</Text>
+            <Text>{error?.message ?? "Something went wrong"}</Text>
         </View>
     );
 }

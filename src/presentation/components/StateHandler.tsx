@@ -9,12 +9,35 @@ import {ViewStyle} from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 type Props<Model> = StyledComponentProps & {
     state: State<Model>;
     loadedComponent: (style: StyleProp<ViewStyle> | undefined, data: Model) => ReactElement;
+    loadingComponent?: (style: StyleProp<ViewStyle> | undefined) => ReactElement | undefined;
+    errorComponent?: (style: StyleProp<ViewStyle> | undefined, error: Error) => ReactElement | undefined;
 }
 
-export default function StateHandler<Model>({style, state, loadedComponent}: Props<Model>) {
+export default function StateHandler<Model>(
+    {
+        style,
+        state,
+        loadingComponent,
+        errorComponent,
+        loadedComponent
+    }: Props<Model>
+) {
+    const loadingComponentResolver = () => {
+        return (loadingComponent ? loadingComponent(style) : <ScreenLoading style={style}/>)
+    }
+
+    const errorComponentResolver = () => {
+        return (errorComponent ? errorComponent : <ScreenError style={style} error={state.error}/>)
+    }
+
+    const throwIllegalState = () => {
+        throw new Error("Illegal state error")
+    }
+
     return (
-        state.loading ? <ScreenLoading style={style}/> :
-            state.error ? <ScreenError error={state.error} style={style}/> :
-                state.data ? loadedComponent(style, state.data) : <></>
+        state.loading ? loadingComponentResolver() :
+            state.error ? errorComponentResolver() :
+                state.data ? loadedComponent(style, state.data) :
+                    throwIllegalState()
     );
 }
