@@ -1,11 +1,11 @@
-export interface RestaurantModel {
+export interface OutletModel {
     id: number;
     url: string;
     title: string;
     description: string;
 }
 
-export const restaurantsData: RestaurantModel[] = [
+export const restaurantsData: OutletModel[] = [
     {
         id: 1,
         url: 'https://via.placeholder.com/800x400.png?text=The+Gourmet+Bistro',

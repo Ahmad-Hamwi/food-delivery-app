@@ -1,9 +1,9 @@
 import {carouselData, CarouselModel} from "../models/CarousalModel";
-import {RestaurantModel, restaurantsData} from "../models/RestaurantModel";
+import {OutletModel, restaurantsData} from "../models/OutletModel";
 
 export interface HomeAggregate {
     carousalData: CarouselModel[],
-    restaurants: RestaurantModel[],
+    restaurants: OutletModel[],
 }
 
 export const homeData: HomeAggregate = {

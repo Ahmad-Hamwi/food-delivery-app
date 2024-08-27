@@ -1,10 +1,10 @@
 import {StyledComponentProps} from "../../../components/StyledComponentProps";
 import React, {FC} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {RestaurantModel} from "../../../../infrastructure/models/RestaurantModel";
+import {OutletModel} from "../../../../infrastructure/models/OutletModel";
 
 type Props = StyledComponentProps & {
-    restaurant: RestaurantModel,
+    restaurant: OutletModel,
     onPress: () => void;
 }
 
