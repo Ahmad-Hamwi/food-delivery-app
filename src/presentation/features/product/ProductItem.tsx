@@ -13,7 +13,10 @@ const ProductItem: FC<Props> = ({product, trailingContent}) => {
         <View style={styles.image}/>
         <View style={styles.space}/>
         <View style={styles.verticalRoot}>
-            <Text style={styles.title}>{product.name}</Text>
+            <View style={{flexDirection: "row"}}>
+                <Text style={styles.title}>{product.name}</Text>
+                <Text style={styles.price}>{product.price} AED</Text>
+            </View>
             <Text style={styles.description}>{product.description}</Text>
             <View style={styles.blankSpace}/>
             {trailingContent}
@@ -24,7 +27,7 @@ const ProductItem: FC<Props> = ({product, trailingContent}) => {
 const styles = StyleSheet.create({
     root: {
         flexDirection: "row",
-        paddingVertical: 8,
+        paddingVertical: 16,
         paddingHorizontal: 16,
     },
     image: {
@@ -41,8 +44,14 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18,
+        fontWeight: 'bold',
     },
     description: {},
+    price: {
+        marginStart: "auto",
+        fontWeight: 'bold',
+        fontSize: 20,
+    },
     blankSpace: {
         flex: 1,
     }
