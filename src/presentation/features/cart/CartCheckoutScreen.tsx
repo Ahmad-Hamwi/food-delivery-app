@@ -27,7 +27,7 @@ const CartCheckoutScreen: FC<Props> = ({navigation}) => {
             <CheckoutSummary style={styles.summary}/>
             <View style={{height: 16}}/>
         </ScrollView>
-        <CheckoutPlaceOrderButton onPress={() => {}}/>
+        <CheckoutPlaceOrderButton onPress={() => {navigation.navigate("OrderPlaced")}}/>
     </SafeAreaView>
 }
 

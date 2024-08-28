@@ -20,6 +20,7 @@
     "@types/react-redux": "^7.1.33",
     "expo": "~51.0.28",
     "expo-status-bar": "~1.12.1",
+    "lottie-react-native": "^6.7.2",
     "react": "18.2.0",
     "react-native": "0.74.5",
     "react-native-gesture-handler": "^2.18.1",
