@@ -5,7 +5,7 @@ import {ActivityIndicator, StyleSheet, View} from "react-native";
 const HomeContentLoading: FC<StyledComponentProps> = ({style}) => {
     return (
         <View style={[style, styles.root]}>
-            <ActivityIndicator/>
+            <ActivityIndicator size={"large"} color={"#e85589"}/>
         </View>
     );
 }

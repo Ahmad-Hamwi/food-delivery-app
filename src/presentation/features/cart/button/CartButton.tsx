@@ -22,8 +22,8 @@ const CartButton: FC<Props> = ({onPress}) => {
 const styles = StyleSheet.create({
     textContainer: {
         padding: 16,
-        backgroundColor: '#e3e3e3',
-        borderRadius: 16,
+        backgroundColor: "#e85589",
+        borderRadius: 8,
         margin: 16,
         flexDirection: "row",
         alignContent: "space-between",
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 18,
         fontWeight: "bold",
+        color: "white"
     }
 })
 

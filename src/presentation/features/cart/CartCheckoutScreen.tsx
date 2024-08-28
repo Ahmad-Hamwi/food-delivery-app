@@ -8,6 +8,7 @@ import ProductItem from "../product/ProductItem";
 import PaymentMethod from "./PaymentMethod";
 import CheckoutSummary from "./CheckoutSummary";
 import CheckoutPlaceOrderButton from "./CheckoutPlaceOrderButton";
+import HorizontalDivider from "../../components/HorizontalDivider";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Checkout">
 
@@ -15,7 +16,7 @@ const CartCheckoutScreen: FC<Props> = ({navigation}) => {
     return <SafeAreaView style={styles.root}>
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
             <View style={{height: 16}}/>
-            <Text style={styles.title}>Basket</Text>
+            <Text style={styles.title}>Basket - The Gourmet Bistro</Text>
             {outletProducts[1].map(item => <ProductItem style={styles.productItem} key={item.id} product={item}/>)}
             <View style={{height: 16}}/>
             <View style={{flex: 1}}/>

@@ -11,6 +11,7 @@ type Props = StyledComponentProps & {
 const PaymentMethod: FC<Props> = ({style, isChecked, onCheckChanged}) => {
     return <View style={[style, styles.root]}>
         <Checkbox
+            color={"#e85589"}
             status={isChecked ? 'checked' : 'unchecked'}
             onPress={() => onCheckChanged(!isChecked)}
         />
