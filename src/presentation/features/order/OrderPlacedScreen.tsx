@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View} from "react-native";
-import {FC} from "react";
+import {BackHandler, StyleSheet, Text, View} from "react-native";
+import {FC, useEffect} from "react";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/AppNavigation";
 import LottieView from "lottie-react-native";
@@ -8,6 +8,19 @@ import BackToHomeButton from "./BackToHomeButton";
 type Props = NativeStackScreenProps<RootStackParamList, "OrderPlaced">
 
 const OrderPlacedScreen: FC<Props> = ({navigation}) => {
+
+    useEffect(() => {
+        const backHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            () => {
+                navigation.popToTop()
+                return true;
+            }
+        );
+
+        return () => backHandler.remove();
+    }, []);
+
     return <View style={styles.root}>
         <View style={{flex: 1}}/>
         <LottieView style={styles.animation} autoPlay={true} loop={false} source={require('../../../../assets/checkmark.json')}/>
