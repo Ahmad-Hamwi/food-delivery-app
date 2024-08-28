@@ -1,8 +1,11 @@
+import {OutletProductModel} from "./OutletProductModel";
+
 export interface OutletModel {
     id: number;
     url: string;
     title: string;
     description: string;
+    products?: OutletProductModel[] | null;
 }
 
 export const outletsData: OutletModel[] = [
