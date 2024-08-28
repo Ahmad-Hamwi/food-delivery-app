@@ -1,4 +1,4 @@
-import HorizontalDivider from "../../../components/HorizontalDivider";
+import HorizontalDivider from "../../components/HorizontalDivider";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {FC} from "react";
 

@@ -1,34 +1,33 @@
-import {ScrollView, StyleSheet, Text, View} from "react-native";
-import {FC} from "react";
+import {StyleSheet} from "react-native";
+import {FC, useEffect} from "react";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/AppNavigation";
 import {SafeAreaView} from "react-native-safe-area-context";
-import {outletProducts} from "../../../infrastructure/models/OutletProductModel";
-import ProductItem from "../product/ProductItem";
-import PaymentMethod from "./PaymentMethod";
-import CheckoutSummary from "./CheckoutSummary";
-import CheckoutPlaceOrderButton from "./CheckoutPlaceOrderButton";
-import HorizontalDivider from "../../components/HorizontalDivider";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, RootState} from "../../redux/store";
+import {CartState} from "./redux/CartState";
+import {fetchCart} from "./redux/CartAsyncThunks";
+import CartCheckoutLoaded from "./CartCheckoutLoaded";
+import StateHandler from "../../components/StateHandler";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Checkout">
 
 const CartCheckoutScreen: FC<Props> = ({navigation}) => {
-    return <SafeAreaView style={styles.root}>
-        <ScrollView contentContainerStyle={{flexGrow: 1}}>
-            <View style={{height: 16}}/>
-            <Text style={styles.title}>Basket - The Gourmet Bistro</Text>
-            {outletProducts[1].map(item => <ProductItem style={styles.productItem} key={item.id} product={item}/>)}
-            <View style={{height: 16}}/>
-            <View style={{flex: 1}}/>
-            <Text style={styles.title}>Payment method</Text>
-            <PaymentMethod style={styles.paymentMethod} isChecked={true} onCheckChanged={() => {
-            }}/>
-            <View style={{height: 16}}/>
-            <Text style={styles.title}>Summary</Text>
-            <CheckoutSummary style={styles.summary}/>
-            <View style={{height: 16}}/>
-        </ScrollView>
-        <CheckoutPlaceOrderButton onPress={() => {navigation.navigate("OrderPlaced")}}/>
+    const dispatch = useDispatch<AppDispatch>();
+    const cartState: CartState = useSelector((state: RootState) => state.cart);
+
+    useEffect(() => {
+        dispatch(fetchCart());
+    }, [dispatch]);
+
+    return <SafeAreaView>
+        <StateHandler style={styles.root} state={cartState} loadedComponent={(style, data) =>
+            <CartCheckoutLoaded
+                style={style}
+                cart={data}
+                onPlaceOrder={() => navigation.navigate("OrderPlaced")}
+            />
+        }/>
     </SafeAreaView>
 }
 

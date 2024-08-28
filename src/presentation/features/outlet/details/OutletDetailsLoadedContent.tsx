@@ -5,7 +5,7 @@ import OutletHeadingInfo from "./OutletHeadingInfo";
 import ProductItem from "../../product/ProductItem";
 import ProductCounter from "../../product/ProductCounter";
 import {FlatList, StyleSheet, View} from "react-native";
-import CartButton from "../../cart/button/CartButton";
+import CartButton from "../../cart/CartButton";
 
 type Props = StyledComponentProps & {
     outlet: OutletModel,
