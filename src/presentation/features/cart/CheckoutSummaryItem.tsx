@@ -5,13 +5,14 @@ import {FC} from "react";
 type Props = StyledComponentProps & {
     name: string;
     value: string;
+    prominent?: boolean;
 }
 
-const CheckoutSummaryItem: FC<Props> = ({style, name, value}) => {
+const CheckoutSummaryItem: FC<Props> = ({style, name, value, prominent = false}) => {
     return <View style={[style, styles.root]}>
-        <Text style={styles.name}>{name}</Text>
+        <Text style={prominent ? styles.prominent : styles.name}>{name}</Text>
         <View style={{flex: 1}}/>
-        <Text style={styles.value}>{value}</Text>
+        <Text style={prominent ? styles.prominent : styles.value}>{value}</Text>
     </View>;
 }
 
@@ -22,6 +23,11 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 18,
         fontWeight: 'bold',
+    },
+    prominent: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: "#e85589",
     },
     value: {
         fontSize: 18,

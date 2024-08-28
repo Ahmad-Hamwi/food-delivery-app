@@ -13,7 +13,7 @@ const CheckoutSummary: FC<Props> = ({style, tax, total, subTotal}) => {
     return <View style={style}>
         <CheckoutSummaryItem style={styles.item} name={"Subtotal"} value={subTotal.toString() + " AED"}/>
         <CheckoutSummaryItem style={styles.item} name={"tax"} value={tax.toString() + " AED"}/>
-        <CheckoutSummaryItem style={styles.item} name={"Total"} value={total.toString() + " AED"}/>
+        <CheckoutSummaryItem style={styles.item} name={"Total"} value={total.toString() + " AED"} prominent/>
     </View>
 }
 
