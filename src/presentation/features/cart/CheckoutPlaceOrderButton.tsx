@@ -1,4 +1,4 @@
-import HorizontalDivider from "../../../components/HorizontalDivider";
+import HorizontalDivider from "../../components/HorizontalDivider";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {FC} from "react";
 
@@ -6,14 +6,12 @@ type Props = {
     onPress: () => void;
 }
 
-const CartButton: FC<Props> = ({onPress}) => {
+const CheckoutPlaceOrderButton: FC<Props> = ({onPress}) => {
     return <View>
         <HorizontalDivider/>
         <TouchableOpacity onPress={onPress}>
             <View style={styles.textContainer}>
-                <Text style={styles.text}>Checkout</Text>
-                <View style={{flex: 1}}/>
-                <Text style={styles.text}>3 items for 45 AED total</Text>
+                <Text style={styles.text}>Place order</Text>
             </View>
         </TouchableOpacity>
     </View>
@@ -29,9 +27,11 @@ const styles = StyleSheet.create({
         alignContent: "space-between",
     },
     text: {
+        flex: 1,
         fontSize: 18,
         fontWeight: "bold",
+        textAlign: "center",
     }
 })
 
-export default CartButton;
+export default CheckoutPlaceOrderButton;

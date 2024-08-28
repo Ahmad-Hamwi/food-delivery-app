@@ -9,14 +9,16 @@ import CartButton from "../../cart/button/CartButton";
 
 type Props = StyledComponentProps & {
     outlet: OutletModel,
+    onCartPressed: () => void;
 }
 
-const OutletDetailsLoadedContent: FC<Props> = ({style, outlet}) => {
+const OutletDetailsLoadedContent: FC<Props> = ({style, outlet, onCartPressed}) => {
     return <View style={style}>
         <FlatList
             ListHeaderComponent={<OutletHeadingInfo/>}
             data={outlet.products}
             renderItem={({item}) => <ProductItem
+                style={styles.productItem}
                 product={item}
                 trailingContent={
                     <ProductCounter
@@ -27,11 +29,15 @@ const OutletDetailsLoadedContent: FC<Props> = ({style, outlet}) => {
                 }/>
             }
         />
-        <CartButton/>
+        <CartButton onPress={onCartPressed}/>
     </View>
 }
 
 const styles = StyleSheet.create({
+    productItem: {
+        paddingVertical: 16,
+        paddingHorizontal: 16,
+    },
     counter: {
         marginStart: "auto"
     },

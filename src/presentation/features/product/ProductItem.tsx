@@ -8,8 +8,8 @@ type Props = StyledComponentProps & {
     trailingContent?: React.ReactNode
 }
 
-const ProductItem: FC<Props> = ({product, trailingContent}) => {
-    return <View style={styles.root}>
+const ProductItem: FC<Props> = ({style, product, trailingContent}) => {
+    return <View style={[style, styles.root]}>
         <View style={styles.image}/>
         <View style={styles.space}/>
         <View style={styles.verticalRoot}>
@@ -27,8 +27,6 @@ const ProductItem: FC<Props> = ({product, trailingContent}) => {
 const styles = StyleSheet.create({
     root: {
         flexDirection: "row",
-        paddingVertical: 16,
-        paddingHorizontal: 16,
     },
     image: {
         width: 100,
