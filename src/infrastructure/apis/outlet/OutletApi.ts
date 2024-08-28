@@ -1,23 +1,27 @@
-import {OutletModel, outletsData} from "../../models/OutletModel";
+import {outletsData} from "../../models/OutletModel";
 import {outletProducts} from "../../models/OutletProductModel";
+import {OutletAggregate} from "../../aggregates/OutletAggregate";
+import {cart} from "../../models/CartModel";
 
 export interface IOutletApi {
-    getOutletDetails(outletId: number): Promise<OutletModel | null>;
+    getOutletDetails(outletId: number): Promise<OutletAggregate>;
 }
 
 export class OutletApi implements IOutletApi {
-    getOutletDetails(outletId: number): Promise<OutletModel | null> {
+    getOutletDetails(outletId: number): Promise<OutletAggregate> {
         return new Promise((resolve) => {
             setTimeout(() => {
                 const outlet = outletsData.find(outlet => outlet.id === outletId);
 
+                let outletWithProducts;
                 if (outlet) {
                     const products = outletProducts[outletId] || null;
-
-                    resolve({...outlet, products: products})
+                    outletWithProducts = {...outlet, products: products}
                 } else {
-                    resolve(null);
+                    outletWithProducts = null;
                 }
+
+                resolve({outlet: outletWithProducts, cart: cart});
             }, 2000);
         });
     }

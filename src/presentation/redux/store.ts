@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import homeReducer from '../features/home/redux/HomeReducer'
 import outletReducer from "../features/outlet/details/redux/OutletReducer";
 import cartReducer from "../features/cart/redux/CartReducer";
+import productCountersReducers from "../features/product/redux/ProductCountersReducers";
 
 export const store = configureStore({
     reducer: {
         home: homeReducer,
         outlet: outletReducer,
         cart: cartReducer,
+        productCounters: productCountersReducers,
     },
 });
 

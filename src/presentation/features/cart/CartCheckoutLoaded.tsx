@@ -17,7 +17,13 @@ const CartCheckoutLoaded: FC<Props> = ({style, cart, onPlaceOrder}) => {
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
             <View style={{height: 16}}/>
             <Text style={styles.title}>Basket - {cart.outlet.title}</Text>
-            {cart.items.map(item => <ProductItem style={styles.productItem} key={item.id} product={item}/>)}
+            {cart.items.map(item =>
+                <ProductItem
+                    style={styles.productItem}
+                    key={item.product.id}
+                    product={item.product}
+                />
+            )}
             <View style={{height: 16}}/>
             <View style={{flex: 1}}/>
             <Text style={styles.title}>Payment method</Text>

@@ -193,3 +193,11 @@ export const outletProducts: { [outletId: number]: OutletProductModel[] } = {
         }
     ]
 };
+
+export const productsFlat = [
+    outletProducts[1],
+    outletProducts[2],
+    outletProducts[3],
+    outletProducts[4],
+    outletProducts[5],
+].flat()

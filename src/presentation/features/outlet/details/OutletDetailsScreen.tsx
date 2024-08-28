@@ -9,6 +9,7 @@ import {fetchOutletDetails} from "./redux/OutletAsyncThunks";
 import StateHandler from "../../../components/StateHandler";
 import {OutletState} from "./redux/OutletState";
 import OutletDetailsLoadedContent from "./OutletDetailsLoadedContent";
+import {CartState} from "../../cart/redux/CartState";
 
 type Props = NativeStackScreenProps<RootStackParamList, "OutletDetails">
 
@@ -17,6 +18,7 @@ const OutletDetailsScreen: FC<Props> = ({route, navigation}) => {
 
     const dispatch = useDispatch<AppDispatch>();
     const outletState: OutletState = useSelector((state: RootState) => state.outlet);
+    const cartState: CartState = useSelector((state: RootState) => state.cart);
 
     useEffect(() => {
         dispatch(fetchOutletDetails(outletId));
@@ -31,6 +33,7 @@ const OutletDetailsScreen: FC<Props> = ({route, navigation}) => {
                     <OutletDetailsLoadedContent
                         style={style}
                         outlet={data}
+                        cart={cartState.data ? cartState.data : null}
                         onCartPressed={() => navigation.navigate("Checkout")}
                     />
                 }

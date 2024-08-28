@@ -1,33 +1,17 @@
-import {OutletModel, outletsData} from "./OutletModel";
-import {OutletProductModel, outletProducts} from "./OutletProductModel";
+import {OutletModel} from "./OutletModel";
+import {CartItemAggregate} from "../aggregates/CartItemAggregate";
 
 export interface CartModel {
     outlet: OutletModel;
-    items: OutletProductModel[];
+    items: CartItemAggregate[];
     selectedPaymentMethod: "cash" | null;
     subTotal: number;
     tax: number;
     total: number;
 }
 
-const selectedOutlet: OutletModel = outletsData[0];
+export function setCart(newCart: CartModel | null) {
+    cart = newCart;
+}
 
-const selectedItems: OutletProductModel[] = [
-    outletProducts[1][0],
-    outletProducts[1][1],
-    outletProducts[1][2],
-];
-
-const subTotal = selectedItems.reduce((total, item) => total + item.price, 0);
-const taxRate = 0.05;
-const tax = subTotal * taxRate;
-const total = subTotal + tax;
-
-export const cart: CartModel = {
-    outlet: selectedOutlet,
-    items: selectedItems,
-    selectedPaymentMethod: "cash",
-    subTotal: subTotal,
-    tax: tax,
-    total: total,
-};
+export let cart: CartModel | null = null;
