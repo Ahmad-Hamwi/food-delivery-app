@@ -22,6 +22,9 @@ const CartCheckoutLoaded: FC<Props> = ({style, cart, onPlaceOrder}) => {
                     style={styles.productItem}
                     key={item.product.id}
                     product={item.product}
+                    trailingContent={
+                        <Text style={styles.quantity}>x{item.quantity}</Text>
+                    }
                 />
             )}
             <View style={{height: 16}}/>
@@ -51,6 +54,14 @@ const styles = StyleSheet.create({
     },
     productItem: {
         paddingVertical: 8,
+        paddingHorizontal: 16,
+    },
+    quantity: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginStart: "auto",
+        backgroundColor: '#e3e3e3',
+        borderRadius: 4,
         paddingHorizontal: 16,
     },
     paymentMethod: {
