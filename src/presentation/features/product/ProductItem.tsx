@@ -15,6 +15,7 @@ const ProductItem: FC<Props> = ({product, trailingContent}) => {
         <View style={styles.verticalRoot}>
             <Text style={styles.title}>{product.name}</Text>
             <Text style={styles.description}>{product.description}</Text>
+            <View style={styles.blankSpace}/>
             {trailingContent}
         </View>
     </View>;
@@ -41,7 +42,10 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
     },
-    description: {}
+    description: {},
+    blankSpace: {
+        flex: 1,
+    }
 })
 
 export default ProductItem;
