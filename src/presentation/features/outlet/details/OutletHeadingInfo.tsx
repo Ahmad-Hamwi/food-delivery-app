@@ -1,15 +1,19 @@
 import {StyleSheet, Text, View} from "react-native";
+import {OutletModel} from "../../../../infrastructure/models/OutletModel";
+import {FC} from "react";
 
-const OutletHeadingInfo = () => {
+type Props = {
+    outlet: OutletModel;
+}
+
+const OutletHeadingInfo: FC<Props> = ({outlet}) => {
     return (
         <View>
             <View style={styles.outletImage}/>
             <View style={styles.space}/>
             <View style={styles.outletInfo}>
-                <Text style={styles.title}>The gourmet Bistro</Text>
-                <Text style={styles.description}>A fine dining restaurant offering a diverse menu of gourmet
-                    dishes and
-                    a curated wine list.</Text>
+                <Text style={styles.title}>{outlet.title}</Text>
+                <Text style={styles.description}>{outlet.description}</Text>
             </View>
             <View style={styles.space}/>
             <Text style={styles.menuTitle}>Menu</Text>

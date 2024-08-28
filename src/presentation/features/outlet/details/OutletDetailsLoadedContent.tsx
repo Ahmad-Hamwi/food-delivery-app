@@ -17,7 +17,7 @@ type Props = StyledComponentProps & {
 const OutletDetailsLoadedContent: FC<Props> = ({style, outlet, cart, onCartPressed}) => {
     return <View style={style}>
         <FlatList
-            ListHeaderComponent={<OutletHeadingInfo/>}
+            ListHeaderComponent={<OutletHeadingInfo outlet={outlet}/>}
             data={outlet.products}
             renderItem={({item}) => <ProductItem
                 style={styles.productItem}
