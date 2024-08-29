@@ -12,7 +12,7 @@ type Props<Model> = StyledComponentProps & {
     loadingComponent?: (style: StyleProp<ViewStyle> | undefined) => ReactElement | undefined;
     errorComponent?: (style: StyleProp<ViewStyle> | undefined, error: Error) => ReactElement | undefined;
     onErrorRetry?: () => void | undefined;
-    emptyDataComponent?: (style: StyleProp<ViewStyle> | undefined) => ReactElement | undefined;
+    noDataComponent?: (style: StyleProp<ViewStyle> | undefined) => ReactElement | undefined;
 }
 
 export default function StateHandler<Model>(
@@ -22,7 +22,7 @@ export default function StateHandler<Model>(
         loadingComponent,
         errorComponent,
         loadedComponent,
-        emptyDataComponent,
+        noDataComponent,
         onErrorRetry,
     }: Props<Model>
 ) {
@@ -39,7 +39,7 @@ export default function StateHandler<Model>(
     }
 
     const emptyDataComponentResolver = () => {
-        return (emptyDataComponent ? emptyDataComponent(style) : <></>)
+        return (noDataComponent ? noDataComponent(style) : <></>)
     }
 
     return (

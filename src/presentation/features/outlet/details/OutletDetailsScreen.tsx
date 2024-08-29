@@ -38,7 +38,7 @@ const OutletDetailsScreen: FC<Props> = ({route, navigation}) => {
                         onCartPressed={() => navigation.navigate("Checkout")}
                     />
                 }
-                emptyDataComponent={(style) => <Text>Outlet not found</Text>}
+                noDataComponent={(style) => <Text>Outlet not found</Text>}
             />
             <SafeAreaView style={styles.backContainer}>
                 <BackButton style={styles.back} withBorder/>
