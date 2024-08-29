@@ -3,7 +3,7 @@ import {HomeAggregate} from "../../../../infrastructure/aggregates/HomeAggregate
 import {container} from "tsyringe";
 import {IHomeApi} from "../../../../infrastructure/apis/home/HomeApi";
 
-export const fetchHomeData = createAsyncThunk<HomeAggregate>(
+export const fetchHomeData = createAsyncThunk<HomeAggregate | null>(
     'home/fetchHomeData',
     async (_, {rejectWithValue}) => {
         try {
