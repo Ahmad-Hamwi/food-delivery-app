@@ -22,7 +22,7 @@ export class MockedOutletApi implements IOutletApi {
                 }
 
                 resolve({outlet: outletWithProducts, cart: cart});
-            }, 2000);
+            }, 1500);
         });
     }
 }

@@ -1,7 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {container} from "tsyringe";
 import {CartModel} from "../../../../infrastructure/models/CartModel";
-import {ICartApi} from "../../../../infrastructure/apis/cart/CartApi";
+import {ICartApi} from "../../../../infrastructure/apis/cart/MockedCartApi";
 
 export const fetchCart = createAsyncThunk<CartModel | null>(
     'cart/fetchCart',
