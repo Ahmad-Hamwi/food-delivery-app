@@ -51,14 +51,13 @@ const ProductCounter: FC<Props> = ({style, productId, value}) => {
 const styles = StyleSheet.create({
     root: {
         flexDirection: "row",
-        width: 150,
+        width: 96,
         backgroundColor: '#e3e3e3',
         borderRadius: 8
     },
     section: {
         flex: 1,
-        paddingHorizontal: 12,
-        paddingVertical: 8,
+        paddingVertical: 6,
     },
     text: {
         fontSize: 18,

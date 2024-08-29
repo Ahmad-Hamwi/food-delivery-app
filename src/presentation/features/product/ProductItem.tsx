@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
     },
     image: {
-        width: 100,
-        height: 112,
+        width: 112,
+        height: 120,
         backgroundColor: '#e3e3e3',
-        borderRadius: 8,
+        borderRadius: 16,
     },
     space: {
         width: 8,

@@ -28,7 +28,7 @@ const styles = StyleSheet.create(
             height: 150,
             width: "100%",
             backgroundColor: '#e3e3e3',
-            borderRadius: 8,
+            borderRadius: 16,
         },
         space: {
             height: 8,
