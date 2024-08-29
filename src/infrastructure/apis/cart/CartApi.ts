@@ -11,7 +11,7 @@ export interface ICartApi {
     decrementItemQuantity(productId: number): Promise<CartModel | null>;
 }
 
-export class CartApi implements ICartApi {
+export class MockedCartApi implements ICartApi {
     getCart(): Promise<CartModel | null> {
         return new Promise((resolve) => {
             setTimeout(() => resolve(cart), 2000);

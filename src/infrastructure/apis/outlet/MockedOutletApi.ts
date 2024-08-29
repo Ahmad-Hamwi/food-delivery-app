@@ -7,7 +7,7 @@ export interface IOutletApi {
     getOutletDetails(outletId: number): Promise<OutletAggregate>;
 }
 
-export class OutletApi implements IOutletApi {
+export class MockedOutletApi implements IOutletApi {
     getOutletDetails(outletId: number): Promise<OutletAggregate> {
         return new Promise((resolve) => {
             setTimeout(() => {

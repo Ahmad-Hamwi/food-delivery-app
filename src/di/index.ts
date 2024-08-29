@@ -1,16 +1,16 @@
 import { container } from 'tsyringe';
-import {HomeApi, IHomeApi} from "../infrastructure/apis/home/HomeApi";
-import {IOutletApi, OutletApi} from "../infrastructure/apis/outlet/OutletApi";
-import {CartApi, ICartApi} from "../infrastructure/apis/cart/CartApi";
+import {MockedHomeApi, IHomeApi} from "../infrastructure/apis/home/MockedHomeApi";
+import {IOutletApi, MockedOutletApi} from "../infrastructure/apis/outlet/MockedOutletApi";
+import {MockedCartApi, ICartApi} from "../infrastructure/apis/cart/CartApi";
 
 container.register<IHomeApi>('IHomeApi', {
-    useClass: HomeApi
+    useClass: MockedHomeApi
 });
 
 container.register<IOutletApi>('IOutletApi', {
-    useClass: OutletApi
+    useClass: MockedOutletApi
 });
 
 container.register<ICartApi>('ICartApi', {
-    useClass: CartApi
+    useClass: MockedCartApi
 });

@@ -4,7 +4,7 @@ export interface IHomeApi {
     getHomeData(): Promise<HomeAggregate>;
 }
 
-export class HomeApi implements IHomeApi {
+export class MockedHomeApi implements IHomeApi {
     getHomeData(): Promise<HomeAggregate> {
         return new Promise((resolve) => {
             setTimeout(() => resolve(homeData), 2000);
