@@ -23,6 +23,7 @@ export class MockedCartApi implements ICartApi {
             setTimeout(() => {
                 if (!cart) { // no cart before
                     resolve(this.createNewCartWithItem(productId))
+                    return
                 }
 
                 const productInCart = cart!.items.find(item => item.product.id === productId);
