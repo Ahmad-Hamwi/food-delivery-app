@@ -9,8 +9,22 @@
 - There is an abstraction over recurring UI states, in these cases the component `<StateHandler/>` is used to handle the generic cases.
 - The Cart's end-state is expected to be saved in a back-end rather than cached locally, and the `MockedCartApi` is doing all the work that a backend should do.
 
-![](demo/1.png)
-![](demo/2.png)
-![](demo/3.png)
-![](demo/4.png)
-![](demo/5.png)
+### Android
+
+<div>
+    <img src="demo/1.png" alt="Alt text" width="19%"/>
+    <img src="demo/2.png" alt="Alt text" width="19%"/>
+    <img src="demo/3.png" alt="Alt text" width="19%"/>
+    <img src="demo/4.png" alt="Alt text" width="19%"/>
+    <img src="demo/5.png" alt="Alt text" width="19%"/>
+</div>
+
+### iOS
+
+<div>
+    <img src="demo/6.png" alt="Alt text" width="19%"/>
+    <img src="demo/7.png" alt="Alt text" width="19%"/>
+    <img src="demo/8.png" alt="Alt text" width="19%"/>
+    <img src="demo/9.png" alt="Alt text" width="19%"/>
+    <img src="demo/10.png" alt="Alt text" width="19%"/>
+</div>
