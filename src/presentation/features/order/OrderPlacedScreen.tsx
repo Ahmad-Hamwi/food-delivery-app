@@ -4,6 +4,7 @@ import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/AppNavigation";
 import LottieView from "lottie-react-native";
 import BackToHomeButton from "./BackToHomeButton";
+import {SafeAreaView} from "react-native-safe-area-context";
 
 type Props = NativeStackScreenProps<RootStackParamList, "OrderPlaced">
 
@@ -21,14 +22,14 @@ const OrderPlacedScreen: FC<Props> = ({navigation}) => {
         return () => backHandler.remove();
     }, []);
 
-    return <View style={styles.root}>
+    return <SafeAreaView style={styles.root}>
         <View style={{flex: 1}}/>
         <LottieView style={styles.animation} autoPlay={true} loop={false} source={require('../../../../assets/checkmark.json')}/>
         <Text style={styles.text}>Order placed</Text>
         <Text style={styles.description}>Your order is on its way</Text>
         <View style={{flex: 1}}/>
         <BackToHomeButton onPress={() => navigation.popToTop()}/>
-    </View>
+    </SafeAreaView>
 }
 
 const styles = StyleSheet.create({
