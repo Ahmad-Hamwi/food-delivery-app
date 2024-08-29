@@ -1,5 +1,5 @@
 import {StyledComponentProps} from "../../components/StyledComponentProps";
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import HorizontalDivider from "../../components/HorizontalDivider";
@@ -23,10 +23,12 @@ const SearchBar: FC<HomeSearchBarProps> = (
         showBackButton = false,
     }
 ) => {
+    const [isFocused, setIsFocused] = useState(false);
+
     return <View style={style}>
         <View style={styles.container}>
             {showBackButton && <BackButton withBorder style={styles.back}/>}
-            <TouchableOpacity style={styles.box} onPress={onPress} disabled={!actAsButton}>
+            <TouchableOpacity style={[styles.box, isFocused && styles.boxFocused]} onPress={onPress} disabled={!actAsButton}>
                 <Ionicons name="search" size={20} color="black" style={styles.icon}/>
                 {
                     actAsButton
@@ -38,6 +40,8 @@ const SearchBar: FC<HomeSearchBarProps> = (
                             value={value}
                             placeholder={"Search"}
                             selectionColor={"#e85589"}
+                            onFocus={() => setIsFocused(true)}
+                            onBlur={() => setIsFocused(false)}
                         />
                 }
             </TouchableOpacity>
@@ -64,9 +68,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         paddingVertical: 8,
         paddingHorizontal: 15,
-        borderRadius: 4,
+        borderRadius: 24,
         borderWidth: 1,
         borderColor: '#d5d5d5',
+    },
+    boxFocused: {
+        borderColor: "#e85589",
     },
     icon: {
         marginRight: 10,
