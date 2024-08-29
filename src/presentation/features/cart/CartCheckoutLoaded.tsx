@@ -6,7 +6,7 @@ import CheckoutSummary from "./CheckoutSummary";
 import CheckoutPlaceOrderButton from "./CheckoutPlaceOrderButton";
 import {StyledComponentProps} from "../../components/StyledComponentProps";
 import {CartModel} from "../../../infrastructure/models/CartModel";
-import CheckoutToolbar from "../search/CheckoutToolbar";
+import CheckoutToolbar from "./CheckoutToolbar";
 
 type Props = StyledComponentProps & {
     cart: CartModel,

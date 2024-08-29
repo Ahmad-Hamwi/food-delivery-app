@@ -20,3 +20,14 @@ export const fetchOutletDetails = createAsyncThunk<OutletModel | null, number>(
         }
     }
 )
+
+export const fetchOutlets = createAsyncThunk<OutletModel[] | null, string>(
+    'outlet/fetchOutlets',
+    async (query, {rejectWithValue}) => {
+        try {
+            return await container.resolve<IOutletApi>("IOutletApi").getOutlets(query)
+        } catch (error) {
+            return rejectWithValue(error)
+        }
+    }
+)

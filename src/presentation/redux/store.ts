@@ -3,6 +3,7 @@ import homeReducer from '../features/home/redux/HomeReducer'
 import outletReducer from "../features/outlet/details/redux/OutletReducer";
 import cartReducer from "../features/cart/redux/CartReducer";
 import productCountersReducers from "../features/product/redux/ProductCountersReducers";
+import searchReducer from "../features/search/redux/SearchReducer";
 
 export const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
         outlet: outletReducer,
         cart: cartReducer,
         productCounters: productCountersReducers,
+        search: searchReducer,
     },
 });
 

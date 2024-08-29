@@ -3,7 +3,7 @@ import {initialState} from "./State";
 
 export default function createConcreteSlice<Model, ThunkArg = void>(
     name: string,
-    asyncThunk: AsyncThunk<Model | null, ThunkArg, any>
+    asyncThunk: AsyncThunk<Model | null, ThunkArg, any>,
 ) {
     return createSlice({
         name: name,

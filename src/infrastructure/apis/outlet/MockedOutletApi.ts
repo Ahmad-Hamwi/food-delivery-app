@@ -1,10 +1,12 @@
-import {outletsData} from "../../models/OutletModel";
+import {OutletModel, outletsData} from "../../models/OutletModel";
 import {outletProducts} from "../../models/OutletProductModel";
 import {OutletAggregate} from "../../aggregates/OutletAggregate";
 import {cart} from "../../models/CartModel";
 
 export interface IOutletApi {
     getOutletDetails(outletId: number): Promise<OutletAggregate>;
+
+    getOutlets(query: string): Promise<OutletModel[] | null>;
 }
 
 export class MockedOutletApi implements IOutletApi {
@@ -24,5 +26,24 @@ export class MockedOutletApi implements IOutletApi {
                 resolve({outlet: outletWithProducts, cart: cart});
             }, 1500);
         });
+    }
+
+    getOutlets(query: string): Promise<OutletModel[] | null> {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                if (query === "") {
+                    resolve(null)
+                    return
+                }
+
+                resolve(
+                    outletsData.filter(
+                        outlet =>
+                            outlet.title.toLowerCase().includes(query.toLowerCase()) ||
+                            outlet.description.toLowerCase().includes(query.toLowerCase())
+                    )
+                );
+            }, 1000)
+        })
     }
 }
