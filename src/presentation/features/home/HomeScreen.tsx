@@ -5,10 +5,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../redux/store";
 import {fetchHomeData} from "./redux/HomeAsyncThunks";
 import {FC, useEffect} from "react";
-import HomeToolbar from "./HomeToolbar";
 import {RootStackParamList} from "../../navigation/AppNavigation";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {HomeState} from "./redux/HomeState";
+import SearchBar from "./SearchBar";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 
@@ -22,10 +22,9 @@ const HomeScreen: FC<Props> = ({navigation}) => {
 
     return (
         <SafeAreaView style={styles.root}>
-            <HomeToolbar
-                style={styles.toolbar}
-                onPress={() => {
-                }}
+            <SearchBar
+                actAsButton
+                onPress={() => navigation.navigate('Search')}
             />
             <HomeContent
                 style={styles.content}
@@ -38,16 +37,8 @@ const HomeScreen: FC<Props> = ({navigation}) => {
 
 const styles = StyleSheet.create(
     {
-        root: {
-            width: "100%",
-            height: "100%",
-        },
-        toolbar: {
-            flex: 0,
-        },
-        content: {
-            flex: 1,
-        }
+        root: {flex: 1},
+        content: {flex: 1}
     }
 )
 

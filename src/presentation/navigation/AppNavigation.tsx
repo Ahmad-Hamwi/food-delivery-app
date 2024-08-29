@@ -4,6 +4,7 @@ import HomeScreen from "../features/home/HomeScreen";
 import OutletDetailsScreen from "../features/outlet/details/OutletDetailsScreen";
 import CheckoutScreen from "../features/cart/CartCheckoutScreen";
 import OrderPlacedScreen from "../features/order/OrderPlacedScreen";
+import SearchScreen from "../features/search/SearchScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -12,6 +13,7 @@ export type RootStackParamList = {
     OutletDetails: { outletId: number; };
     Checkout: undefined;
     OrderPlaced: undefined;
+    Search: { searchQuery: string } | undefined;
 };
 
 const AppNavigation = () => {
@@ -22,6 +24,7 @@ const AppNavigation = () => {
                 <Stack.Screen name="OutletDetails" component={OutletDetailsScreen}/>
                 <Stack.Screen name="Checkout" component={CheckoutScreen}/>
                 <Stack.Screen name="OrderPlaced" component={OrderPlacedScreen}/>
+                <Stack.Screen name="Search" component={SearchScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
