@@ -2,6 +2,7 @@ import {cart, CartModel, setCart} from "../../models/CartModel";
 import {productsFlat} from "../../models/OutletProductModel";
 import {outletsData} from "../../models/OutletModel";
 import {CartItemAggregate} from "../../aggregates/CartItemAggregate";
+import paymentMethod from "../../../presentation/features/cart/PaymentMethod";
 
 export interface ICartApi {
     getCart(): Promise<CartModel | null>;
@@ -11,6 +12,8 @@ export interface ICartApi {
     incrementItemQuantity(productId: number): Promise<CartModel | null>;
 
     decrementItemQuantity(productId: number): Promise<CartModel | null>;
+
+    placeOrder(): Promise<CartModel | null>;
 }
 
 export class MockedCartApi implements ICartApi {
@@ -30,6 +33,15 @@ export class MockedCartApi implements ICartApi {
                 resolve(cart)
             }, 700);
         });
+    }
+
+    placeOrder(): Promise<CartModel | null> {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                setCart(null)
+                resolve(cart);
+            }, 2500);
+        })
     }
 
     incrementItemQuantity(productId: number): Promise<CartModel | null> {

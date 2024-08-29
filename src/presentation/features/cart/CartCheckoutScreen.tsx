@@ -6,7 +6,7 @@ import {SafeAreaView} from "react-native-safe-area-context";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../redux/store";
 import {CartState} from "./redux/CartState";
-import {checkPaymentMethod, fetchCart} from "./redux/CartAsyncThunks";
+import {checkPaymentMethod, fetchCart, placeOrder} from "./redux/CartAsyncThunks";
 import CartCheckoutLoaded from "./CartCheckoutLoaded";
 import StateHandler from "../../components/StateHandler";
 import BackButton from "../outlet/details/BackButton";
@@ -22,6 +22,12 @@ const CartCheckoutScreen: FC<Props> = ({navigation}) => {
         dispatch(fetchCart());
     }, [dispatch]);
 
+    useEffect(() => {
+        if (cartState.orderPlaced) {
+            navigation.navigate("OrderPlaced");
+        }
+    }, [cartState]);
+
     return <SafeAreaView>
         <StateHandler style={styles.root} state={cartState} loadedComponent={(style, data) =>
             <CartCheckoutLoaded
@@ -29,7 +35,7 @@ const CartCheckoutScreen: FC<Props> = ({navigation}) => {
                 cart={data}
                 onPlaceOrder={() => {
                     if (isCartValidForSubmission(data) && !cartState.subLoading) {
-                        navigation.navigate("OrderPlaced")
+                        dispatch(placeOrder())
                     }
                 }}
                 onPaymentMethodChanged={(method) => dispatch(checkPaymentMethod({paymentMethod: method}))}

@@ -24,3 +24,14 @@ export const checkPaymentMethod = createAsyncThunk<CartModel | null, {paymentMet
         }
     }
 )
+
+export const placeOrder = createAsyncThunk<CartModel | null>(
+    'cart/placeOrder',
+    async (_, {rejectWithValue}) => {
+        try {
+            return await container.resolve<ICartApi>("ICartApi").placeOrder()
+        } catch (error) {
+            return rejectWithValue(error)
+        }
+    }
+)
