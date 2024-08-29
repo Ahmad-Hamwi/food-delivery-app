@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import {FC, useEffect} from "react";
+import React, {FC, useEffect} from "react";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/AppNavigation";
 import {SafeAreaView} from "react-native-safe-area-context";
@@ -9,6 +9,7 @@ import {CartState} from "./redux/CartState";
 import {fetchCart} from "./redux/CartAsyncThunks";
 import CartCheckoutLoaded from "./CartCheckoutLoaded";
 import StateHandler from "../../components/StateHandler";
+import BackButton from "../outlet/details/BackButton";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Checkout">
 
@@ -28,6 +29,9 @@ const CartCheckoutScreen: FC<Props> = ({navigation}) => {
                 onPlaceOrder={() => navigation.navigate("OrderPlaced")}
             />
         }/>
+        <SafeAreaView style={styles.backContainer}>
+            <BackButton withBorder/>
+        </SafeAreaView>
     </SafeAreaView>
 }
 
@@ -51,7 +55,11 @@ const styles = StyleSheet.create({
     },
     summary: {
         paddingHorizontal: 16,
-    }
+    },
+    backContainer: {
+        position: "absolute",
+        margin: 16,
+    },
 });
 
 export default CartCheckoutScreen;

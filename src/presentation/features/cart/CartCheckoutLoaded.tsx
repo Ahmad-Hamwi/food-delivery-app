@@ -1,11 +1,12 @@
 import {ScrollView, StyleSheet, Text, View} from "react-native";
-import {FC} from "react";
+import React, {FC} from "react";
 import ProductItem from "../product/ProductItem";
 import PaymentMethod from "./PaymentMethod";
 import CheckoutSummary from "./CheckoutSummary";
 import CheckoutPlaceOrderButton from "./CheckoutPlaceOrderButton";
 import {StyledComponentProps} from "../../components/StyledComponentProps";
 import {CartModel} from "../../../infrastructure/models/CartModel";
+import CheckoutToolbar from "../search/CheckoutToolbar";
 
 type Props = StyledComponentProps & {
     cart: CartModel,
@@ -14,9 +15,10 @@ type Props = StyledComponentProps & {
 
 const CartCheckoutLoaded: FC<Props> = ({style, cart, onPlaceOrder}) => {
     return <View style={style}>
+        <CheckoutToolbar outletName={cart.outlet.title}/>
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
             <View style={{height: 16}}/>
-            <Text style={styles.title}>Basket - {cart.outlet.title}</Text>
+            <Text style={styles.title}>Basket</Text>
             {cart.items.map(item =>
                 <ProductItem
                     style={styles.productItem}
