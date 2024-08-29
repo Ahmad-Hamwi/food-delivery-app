@@ -1,16 +1,17 @@
-import {fetchCart} from "./CartAsyncThunks";
+import {checkPaymentMethod, fetchCart} from "./CartAsyncThunks";
 import {CartModel} from "../../../../infrastructure/models/CartModel";
-import {createSlice, Draft, PayloadAction} from "@reduxjs/toolkit";
-import {initialState} from "../../../redux/State";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {cartInitialState} from "./CartState";
 
 const cartSlice = createSlice({
     name: "cart",
-    initialState: () => initialState<CartModel | null>(),
+    initialState: cartInitialState,
     reducers: {
         setCart(state, action: PayloadAction<CartModel | null>) {
-            state.loading = true;
+            state.loading = false;
             state.data = action.payload;
             state.error = null;
+            state.subLoading = false;
         },
     },
     extraReducers: (builder) => {
@@ -29,6 +30,17 @@ const cartSlice = createSlice({
                 state.loading = false;
                 state.data = action.payload
                 state.error = null
+            })
+            .addCase(checkPaymentMethod.pending, (state) => {
+                state.subLoading = true;
+            })
+            .addCase(checkPaymentMethod.rejected, (state, action) => {
+                state.subLoading = false;
+                state.error = action.payload as Error
+            })
+            .addCase(checkPaymentMethod.fulfilled, (state, action) => {
+                state.subLoading = false;
+                state.data = action.payload
             })
     }
 });

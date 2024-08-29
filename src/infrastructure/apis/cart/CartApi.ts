@@ -6,6 +6,8 @@ import {CartItemAggregate} from "../../aggregates/CartItemAggregate";
 export interface ICartApi {
     getCart(): Promise<CartModel | null>;
 
+    checkPaymentMethod(paymentMethod: "cash" | null): Promise<CartModel | null>
+
     incrementItemQuantity(productId: number): Promise<CartModel | null>;
 
     decrementItemQuantity(productId: number): Promise<CartModel | null>;
@@ -14,7 +16,19 @@ export interface ICartApi {
 export class MockedCartApi implements ICartApi {
     getCart(): Promise<CartModel | null> {
         return new Promise((resolve) => {
-            setTimeout(() => resolve(cart), 2000);
+            setTimeout(() => resolve(cart), 1500);
+        });
+    }
+
+    checkPaymentMethod(paymentMethod: "cash" | null): Promise<CartModel | null> {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                if (cart) {
+                    setCart({...cart, selectedPaymentMethod: paymentMethod,})
+                }
+
+                resolve(cart)
+            }, 700);
         });
     }
 

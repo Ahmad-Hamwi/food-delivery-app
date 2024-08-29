@@ -10,6 +10,10 @@ export interface CartModel {
     total: number;
 }
 
+export function isCartValidForSubmission(cart: CartModel): boolean {
+    return cart.selectedPaymentMethod !== null;
+}
+
 export function setCart(newCart: CartModel | null) {
     cart = newCart;
 }

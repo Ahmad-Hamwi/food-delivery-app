@@ -10,10 +10,12 @@ import CheckoutToolbar from "../search/CheckoutToolbar";
 
 type Props = StyledComponentProps & {
     cart: CartModel,
+    subLoading: boolean,
+    onPaymentMethodChanged: (paymentMethod: "cash" | null) => void,
     onPlaceOrder: () => void;
 }
 
-const CartCheckoutLoaded: FC<Props> = ({style, cart, onPlaceOrder}) => {
+const CartCheckoutLoaded: FC<Props> = ({style, cart, subLoading, onPaymentMethodChanged, onPlaceOrder}) => {
     return <View style={style}>
         <CheckoutToolbar outletName={cart.outlet.title}/>
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
@@ -35,15 +37,21 @@ const CartCheckoutLoaded: FC<Props> = ({style, cart, onPlaceOrder}) => {
             <PaymentMethod
                 style={styles.paymentMethod}
                 isChecked={cart.selectedPaymentMethod === "cash"}
-                onCheckChanged={() => {
+                onCheckChanged={(isChecked) => {
+                    onPaymentMethodChanged(isChecked ? "cash" : null)
                 }}
+                allowClick={!subLoading}
             />
             <View style={{height: 16}}/>
             <Text style={styles.title}>Summary</Text>
             <CheckoutSummary style={styles.summary} subTotal={cart.subTotal} tax={cart.tax} total={cart.total}/>
             <View style={{height: 16}}/>
         </ScrollView>
-        <CheckoutPlaceOrderButton onPress={onPlaceOrder}/>
+        <CheckoutPlaceOrderButton
+            isLoading={subLoading}
+            onPress={onPlaceOrder}
+            isDisabled={cart.selectedPaymentMethod === null}
+        />
     </View>
 }
 

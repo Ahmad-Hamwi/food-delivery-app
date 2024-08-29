@@ -13,3 +13,14 @@ export const fetchCart = createAsyncThunk<CartModel | null>(
         }
     }
 )
+
+export const checkPaymentMethod = createAsyncThunk<CartModel | null, {paymentMethod: "cash" | null}>(
+    'cart/checkPaymentMethod',
+    async ({paymentMethod}, {rejectWithValue}) => {
+        try {
+            return await container.resolve<ICartApi>("ICartApi").checkPaymentMethod(paymentMethod)
+        } catch (error) {
+            return rejectWithValue(error)
+        }
+    }
+)
