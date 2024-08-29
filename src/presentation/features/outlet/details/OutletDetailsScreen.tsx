@@ -1,4 +1,4 @@
-import {FC, useEffect} from "react";
+import React, {FC, useEffect} from "react";
 import {StyleSheet, Text} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
@@ -10,6 +10,7 @@ import StateHandler from "../../../components/StateHandler";
 import {OutletState} from "./redux/OutletState";
 import OutletDetailsLoadedContent from "./OutletDetailsLoadedContent";
 import {CartState} from "../../cart/redux/CartState";
+import BackButton from "./BackButton";
 
 type Props = NativeStackScreenProps<RootStackParamList, "OutletDetails">
 
@@ -39,6 +40,9 @@ const OutletDetailsScreen: FC<Props> = ({route, navigation}) => {
                 }
                 emptyDataComponent={(style) => <Text>Outlet not found</Text>}
             />
+            <SafeAreaView style={styles.backContainer}>
+                <BackButton style={styles.back} withBorder/>
+            </SafeAreaView>
         </SafeAreaView>
     );
 }
@@ -51,6 +55,13 @@ const styles = StyleSheet.create({
     content: {
         flex: 1,
     },
+    backContainer: {
+        position: "absolute",
+        margin: 16,
+    },
+    back: {
+        backgroundColor: "white",
+    }
 });
 
 export default OutletDetailsScreen;

@@ -20,6 +20,7 @@ const SearchScreen: FC<Props> = ({navigation}) => {
 
     return <SafeAreaView style={styles.root}>
         <SearchBar
+            showBackButton
             onTextInput={(q) => setQuery(q)}
             value={query}
         />
