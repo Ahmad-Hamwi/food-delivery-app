@@ -26,6 +26,7 @@ const HomeContent: FC<Props> = ({style, state, onOutletPressed, onRetry}) => {
                     data={data.restaurants}
                     ListHeaderComponent={
                         <View>
+                            <Text style={styles.title}>Top offers 🔥</Text>
                             <ImageCarousel carousalData={data.carousalData}/>
                             <View style={styles.space}/>
                             <Text style={styles.title}>Restaurants near you 📍</Text>
