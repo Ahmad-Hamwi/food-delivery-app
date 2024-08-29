@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, View} from "react-native";
+import {FlatList, StyleSheet, View, Text} from "react-native";
 import ImageCarousel from "./ImageCarousel";
 import OutletItem from "../outlet/item/OutletItem";
 import {StyledComponentProps} from "../../components/StyledComponentProps";
@@ -27,6 +27,7 @@ const HomeContent: FC<Props> = ({style, state, onOutletPressed}) => {
                         <View>
                             <ImageCarousel carousalData={data.carousalData}/>
                             <View style={styles.space}/>
+                            <Text style={styles.title}>Restaurants near you 📍</Text>
                         </View>
                     }
                     renderItem={({item}) => (
@@ -51,7 +52,13 @@ const styles = StyleSheet.create(
         item: {
             marginHorizontal: 16,
             marginBottom: 16,
-        }
+        },
+        title: {
+            paddingHorizontal: 16,
+            fontSize: 24,
+            fontWeight: 'bold',
+            paddingVertical: 16,
+        },
     }
 )
 

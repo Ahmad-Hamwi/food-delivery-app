@@ -1,7 +1,7 @@
 import {StyledComponentProps} from "../../components/StyledComponentProps";
 import {OutletProductModel} from "../../../infrastructure/models/OutletProductModel";
 import React, {FC} from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {Image, StyleSheet, Text, View} from "react-native";
 
 type Props = StyledComponentProps & {
     product: OutletProductModel
@@ -10,7 +10,7 @@ type Props = StyledComponentProps & {
 
 const ProductItem: FC<Props> = ({style, product, trailingContent}) => {
     return <View style={[style, styles.root]}>
-        <View style={styles.image}/>
+        <Image style={styles.image} source={{uri: product.image}}/>
         <View style={styles.space}/>
         <View style={styles.verticalRoot}>
             <View style={{flexDirection: "row"}}>

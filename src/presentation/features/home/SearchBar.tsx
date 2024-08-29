@@ -55,13 +55,13 @@ const styles = StyleSheet.create({
     back: {
         alignSelf: "center",
         marginEnd: 8,
-        backgroundColor: '#e3e3e3',
+        backgroundColor: '#ffffff',
     },
     box: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#e3e3e3',
+        backgroundColor: '#ffffff',
         paddingVertical: 8,
         paddingHorizontal: 15,
         borderRadius: 4,

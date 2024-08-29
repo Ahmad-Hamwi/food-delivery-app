@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, View, Image} from "react-native";
 import {OutletModel} from "../../../../infrastructure/models/OutletModel";
 import {FC} from "react";
 
@@ -9,7 +9,7 @@ type Props = {
 const OutletHeadingInfo: FC<Props> = ({outlet}) => {
     return (
         <View>
-            <View style={styles.outletImage}/>
+            <Image source={{uri: outlet.url}} style={styles.outletImage}/>
             <View style={styles.space}/>
             <View style={styles.outletInfo}>
                 <Text style={styles.title}>{outlet.title}</Text>

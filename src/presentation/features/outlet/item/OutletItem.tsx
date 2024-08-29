@@ -1,6 +1,6 @@
 import {StyledComponentProps} from "../../../components/StyledComponentProps";
 import React, {FC} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {OutletModel} from "../../../../infrastructure/models/OutletModel";
 
 type Props = StyledComponentProps & {
@@ -12,7 +12,7 @@ const OutletItem: FC<Props> = ({style, restaurant, onPress}) => {
     return (
         <TouchableOpacity style={[style, styles.root]} onPress={onPress}>
             <View>
-                <View style={styles.image}/>
+                <Image source={{uri: restaurant.url}} style={styles.image}/>
                 <View style={styles.space}/>
                 <Text style={styles.title}>{restaurant.title}</Text>
                 <Text style={styles.description}>{restaurant.description}</Text>

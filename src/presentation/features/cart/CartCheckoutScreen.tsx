@@ -43,7 +43,7 @@ const CartCheckoutScreen: FC<Props> = ({navigation}) => {
             />
         }/>
         <SafeAreaView style={styles.backContainer}>
-            <BackButton withBorder/>
+            <BackButton withBorder style={styles.back}/>
         </SafeAreaView>
     </SafeAreaView>
 }
@@ -73,6 +73,9 @@ const styles = StyleSheet.create({
         position: "absolute",
         margin: 16,
     },
+    back: {
+        backgroundColor: "white",
+    }
 });
 
 export default CartCheckoutScreen;
