@@ -8,3 +8,9 @@
 - Static data is generated using GPT and images are downloaded from the internet.
 - There is an abstraction over recurring UI states, in these cases the component `<StateHandler/>` is used to handle the generic cases.
 - The Cart's end-state is expected to be saved in a back-end rather than cached locally, and the `MockedCartApi` is doing all the work that a backend should do.
+
+![](demo/1.png)
+![](demo/2.png)
+![](demo/3.png)
+![](demo/4.png)
+![](demo/5.png)
