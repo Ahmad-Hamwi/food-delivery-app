@@ -30,6 +30,7 @@ const HomeScreen: FC<Props> = ({navigation}) => {
                 style={styles.content}
                 state={homeState}
                 onOutletPressed={(outlet) => navigation.navigate('OutletDetails', {outletId: outlet.id})}
+                onRetry={() => dispatch(fetchHomeData())}
             />
         </SafeAreaView>
     )

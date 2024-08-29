@@ -10,9 +10,10 @@ import {OutletModel} from "../../../infrastructure/models/OutletModel";
 type Props = StyledComponentProps & {
     state: HomeState
     onOutletPressed: (outlet: OutletModel) => void;
+    onRetry: () => void;
 }
 
-const HomeContent: FC<Props> = ({style, state, onOutletPressed}) => {
+const HomeContent: FC<Props> = ({style, state, onOutletPressed, onRetry}) => {
 
     return (
         // @ts-ignore
@@ -40,6 +41,7 @@ const HomeContent: FC<Props> = ({style, state, onOutletPressed}) => {
                     keyExtractor={item => item.id.toString()}
                 />
             )}
+            onErrorRetry={onRetry}
         />
     );
 }
